@@ -1,7 +1,6 @@
 
-## Use basic p5.play-boilerplate
-Boiler plate for p5.play : https://github.com/vishnupriya-whitehatjr/BasicLibFiles
+## THIS PROJECT IS MADE BY AYUSH DINDA
 
-## Please refer to code notes for explanation.
+## Please refer to code notes for explanation
 
 ### Output Link : https://vishnupriya-whitehatjr.github.io/c42-BubbleShootingGame/
