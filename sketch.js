@@ -1,3 +1,7 @@
+/*This game is made by Ayush Dinda.
+This game is base on p5.js
+This is a rocket game.*/
+
 //define variables
 var spaceship, spaceship_img, spaceship2_img;
 var bubble, bubble_img;
@@ -12,7 +16,7 @@ var shotData;
 var score;
 
 function preload(){
-  //load in images
+  //load all the images
   spaceship_img = loadImage("./assets/Spaceship.png");
   spaceship2_img = loadImage("./assets/Spaceship2.png");
   bubble_img = loadImage("./assets/Bubble.png");
@@ -24,13 +28,13 @@ function setup() {
   //create canvas
   var canvas = createCanvas(800,600);
   
-  //set variables
+  //first game state
   gamestate = "waiting";
   health = 100;
   bubbles = new Group();
   shots = new Group();
   score = 0;
-  //item 1 is if a shot was fired or not. item 2 is tracking the delay before being able to shoot again
+  //delay of the shots
   shotData = [false, 0];
   
   //create sprites
@@ -65,7 +69,7 @@ function draw() {
     //shooting
     shooting();
     
-    //death check
+    //cheching the death
     deathCheck();
   }
   
@@ -96,10 +100,10 @@ function movement(){
       spaceship.rotation+=7.5;
   }
   
-  //reduce the speed of the spaceship naturally
+  //reduce the speed of the spaceship automatically
   spaceship.setSpeed(spaceship.getSpeed() * 0.985)
   
-  //make it so going off the edge teleports you on the other side
+  //if the SpaceShip goes out of the screen it teleports to other side
   if(spaceship.y > 650){
      spaceship.y = -30;
   }else if(spaceship.y < -650){
@@ -137,6 +141,8 @@ function displayText(){
   }
     
   textSize(20);
+  
+  //health
   if(gamestate === "playing"){
     if(health === 100){
       text(health, spaceship.x - 17, spaceship.y + 40);
@@ -154,6 +160,7 @@ function displayText(){
      textSize(15);
      text("           How To Play:\nUse the Arrow Keys To Move\n         Dodge the debris\n         Shoot with space\n            Hit P To Start", 308, 250);
   }
+  //gamestate over
   if(gamestate === "over"){
     fill("black");
     textSize(30);
@@ -240,7 +247,7 @@ function collision(){
     }
   }
 }
-
+//shooting of missiles
 function shooting(){
   if(keyDown("space") && shotData[0] === false){
     shot = createSprite(spaceship.x, spaceship.y, 5, 12);
@@ -262,6 +269,7 @@ function shooting(){
   }
 }
 
+//function deathcheck
 function deathCheck(){
   if(health <= 0){
     health = 0;
