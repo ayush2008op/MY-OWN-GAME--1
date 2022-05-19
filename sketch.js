@@ -277,6 +277,14 @@ function deathCheck(){
   }
 }
 
+function gameWin(){
+  if(score === 1500){
+    shots.invisible = true;
+    spaceship.invisible = true;
+    bubble.invisible = true;
+    text("You Win",200,200)
+  }
+}
 
 
 
