@@ -30,7 +30,7 @@ function setup() {
   
   //first game state
   gamestate = "waiting";
-  health = 100;
+  health = 10;
   bubbles = new Group();
   shots = new Group();
   score = 0;
@@ -119,7 +119,7 @@ function movement(){
 
 function reset(){
   gamestate = "waiting";
-  health = 100;
+  health = 10;
   score = 0;
   shotData = [false, 0];
   spaceship.x = 200;
@@ -130,11 +130,11 @@ function reset(){
 
 function displayText(){
   //spaceship health (color depends on health)
-  if(health >= 70){
+  if(health >= 10){
     fill(3, 252, 57);
-  }else if(health >= 50){
+  }else if(health >= 5){
     fill(235, 252, 3);
-  }else if(health >= 20){
+  }else if(health >= 2){
     fill(252, 111, 3);
   }else{
     fill(255, 0, 0);
@@ -144,7 +144,7 @@ function displayText(){
   
   //health
   if(gamestate === "playing"){
-    if(health === 100){
+    if(health === 10){
       text(health, spaceship.x - 17, spaceship.y + 40);
     }else{
       text(health, spaceship.x - 10.5, spaceship.y + 40);
@@ -232,7 +232,7 @@ function generateObstacles(){
 function collision(){
   
   if(bubbles.isTouching(spaceship)){
-        health-=1;
+        health-=2;
       }
   
   //have bullets destroy bubbles
@@ -276,4 +276,7 @@ function deathCheck(){
     gamestate = "over";
   }
 }
+
+
+
 
